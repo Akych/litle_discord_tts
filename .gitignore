@@ -1,0 +1,9 @@
+**/materials
+**/models
+**/sound
+*.rar
+.vs
+**/.vs
+node_modules
+node_modules/*
+**/node_modules

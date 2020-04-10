@@ -1,0 +1,17 @@
+{
+  "name": "tts_discord",
+  "version": "1.0.0",
+  "description": "litle discord yandex speech api tts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akych@4572",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "ffmpeg-binaries": "^4.0.0",
+    "opus": "0.0.0",
+    "opusscript": "0.0.7"
+  }
+}
