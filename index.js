@@ -1,11 +1,11 @@
 const Discord = require('discord.js')
 const Dclient = new Discord.Client()
 var cfg = {
-    "tts_channel_id" : "697885963959009370",
-    "bot_token" : "MjY4ODkwNDQ2MDQ0ODU2MzIx.XpDmrQ.QyR3KgXSVgxDnnqWRkP6ATZVqlw",
+    "tts_channel_id" : "", // text channel id to speech 
+    "bot_token" : "", // bot tocken
 }
 const getTTSLink = (text, speeker = "zahar")=>{
-    return `http://tts.voicetech.yandex.net/tts?format=mp3&quality=lo&platform=web&application=translate&lang=ru_RU&speaker=${speeker}&speed=0.9&emotion=neutral&text=${encodeURIComponent(text)}//////////////////` // \\ need to fix lose endles voice
+    return `http://tts.voicetech.yandex.net/tts?format=mp3&quality=lo&platform=web&application=translate&lang=ru_RU&speaker=${speeker}&speed=0.9&emotion=neutral&text=${encodeURIComponent(text)}//////////////////` // \\ need to fix lose ends voice
 }
 var Channels= {}
 var qeue = new Array()
@@ -46,7 +46,7 @@ const play_tts = (channel)=>{
 }
 Dclient.on('ready', () => {
     console.log("hello")
-    Channels["tts"] = Dclient.channels.get("697885963959009370") 
+    Channels["tts"] = Dclient.channels.get(cfg["tts_channel_id"]) 
     Dclient.on('message', (msg) => {
         if(msg.author.bot) return;
 
