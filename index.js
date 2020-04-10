@@ -18,7 +18,6 @@ const play_tts = (channel)=>{
     if(status.isPlay) return;
     let Link = qeue.shift()
     if(status.isConnect){
-        console.log("load")
         dispatcher =  status.connection.playStream(Link,{seek: 0, volume: 0.5})
         status.isPlay = true
         dispatcher.on("end", ()=>{
@@ -31,10 +30,8 @@ const play_tts = (channel)=>{
         channel.join().then(connection => {
             status.isConnect = true
             status.connection = connection
-
             dispatcher =  connection.playStream(Link,{seek: 0, volume: 0.5})
             status.isPlay = true
-
             dispatcher.on("end", ()=>{
                 status.isPlay = false
                 if(qeue.length > 0){
@@ -45,11 +42,10 @@ const play_tts = (channel)=>{
     }
 }
 Dclient.on('ready', () => {
-    console.log("hello")
+    console.log("Login in")
     Channels["tts"] = Dclient.channels.get(cfg["tts_channel_id"]) 
     Dclient.on('message', (msg) => {
         if(msg.author.bot) return;
-
         if(msg.channel.id == Channels["tts"].id){
             let voiceChannel = msg.member.voiceChannel;
             if (!voiceChannel){ msg.channel.send('Вне войс канала доступ к ***tts*** запрещен.').then((m)=>{m.delete(10000);msg.delete(10000)}); return}
